@@ -1,0 +1,14 @@
+@import 'common/styles.scss';
+
+.button {
+    @extend .text-roboto--small;
+    width: 128px;
+    height: 32px;
+    color: white;
+    background-color: $orange;
+
+    &--pressed {
+        @extend .button;
+        background-color: $orange-dark;
+    }
+}

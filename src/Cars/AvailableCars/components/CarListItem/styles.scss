@@ -1,0 +1,21 @@
+@import 'common/styles.scss';
+
+.car-list-item {
+    height: 56px;
+    float: right;
+    border: 1px solid $gray;
+    padding: $space-base;
+    margin-bottom: $space-base;
+
+    .car-list-item__image {
+        float: left;
+        width: 16.6%;
+        height: 100%;
+        background-color: $gray;
+    }
+
+    .car-list-item__info {
+        display: inline-block;
+        margin-left: $space-large;
+    }
+}

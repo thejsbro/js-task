@@ -1,0 +1,94 @@
+$gray: #EDEDED;
+$gray-dark: #4A4A4A;
+$orange: #EA7F28;
+$orange-dark: #D37324;
+
+$space-base: 12px;
+$space-small: 8px;
+$space-large: 24px;
+
+.margin {
+
+    &-left {
+        margin-left: $space-base;
+        &--large{
+            margin-left: $space-large;
+        }
+    }
+
+    &-right {
+        margin-right: $space-base;
+        &--large {
+            margin-right: $space-large;
+        }
+    }
+
+    &-top {
+        margin-top: $space-base;
+        &--large {
+            margin-top: $space-large;
+        }
+    }
+
+    &-bottom {
+        margin-bottom: $space-base;
+        &--large {
+            margin-bottom: $space-large;
+        }
+    }
+}
+
+.text-roboto {
+    font-family: Roboto;
+    color: $gray-dark;
+    font-size:  18px;
+}
+
+.text-roboto--large-bold {
+    @extend .text-roboto;
+    font-weight: bold;
+    font-size:  32px;
+}
+
+.text-roboto--bold {
+    @extend .text-roboto;
+    font-weight: bold;
+    font-size:  18px;
+}
+
+.text-roboto--small{
+    @extend .text-roboto;
+    font-size:  14px;
+}
+
+.text-roboto--x-small{
+    @extend .text-roboto;
+    font-size:  12px;
+}
+
+.text-link {
+    @extend .text-roboto--x-small;
+    color: $orange;
+    cursor: pointer;
+    &:hover{
+        color: $orange-dark;
+        text-decoration: underline;
+    }
+}
+
+.main {
+    margin: $space-large;
+}
+
+.body {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
+    &::after {
+        content: '';
+        display: block;
+        height: 80px;
+      }
+}

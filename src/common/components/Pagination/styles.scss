@@ -1,0 +1,15 @@
+@import 'common/styles.scss';
+
+.pagination-container {
+    @extend .text-roboto--x-small;
+    text-align: center;
+    margin-top: $space-base;
+
+    & > span {
+        @extend .margin-right--large;
+
+        &:not(.pagination-pages) {
+            @extend .text-link;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@import 'common/styles.scss';
+
+.car-list-filter {
+    width: 100%;
+    border: 1px solid $gray;
+    padding: $space-large;
+}
+
+.car-list-filter__select {
+    padding-bottom: $space-base;
+}
+
+.filter-button {
+    margin-top: $space-large;
+    float: right;
+}

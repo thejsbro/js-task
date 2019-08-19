@@ -1,0 +1,43 @@
+@import 'common/styles.scss';
+
+.select-label {
+    @extend .text-roboto--x-small;
+    margin-bottom: $space-small;
+}
+
+.select-box-list{
+    margin-top: $space-small;
+
+    .select-box-list__item {
+        @extend .text-roboto--small;
+        border-color: $gray;
+        border-style: solid;
+        border-width: 1px 1px 0 1px;
+        padding: $space-small;
+
+        &:last-child {
+            border-bottom-width: 1px;
+        }
+
+        &:hover {
+            background-color: $orange;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+.select-box {
+    @extend .text-roboto--small;
+    border: 1px solid $gray;
+    padding: $space-small;
+
+    .select-box__arrow {
+        height: 14px;
+        float: right;
+        &--opened {
+            @extend .select-box__arrow;
+            transform: rotate(180deg);
+        }
+    }
+}
