@@ -7,10 +7,9 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 module.exports = {
   entry: './src/index.tsx',
   devServer: {
-    contentBase: path.join(__dirname, '/'),
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, '/public'),
     publicPath: '/',
-    // hot: true,
-    // compress: true,
     host: 'localhost',
     port: 3000
   },
@@ -20,12 +19,10 @@ module.exports = {
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.html', // require('html-webpack-template'),
+      template: './public/index.html',
       inject: true,
       appMountId: 'root',
       title: 'AUTO-1'
-      // template: 'public/index.html'
-      // devServer: 'http://localhost:3000'
     })
   ],
   resolve: {
@@ -40,14 +37,8 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         loader: 'url-loader'
-      }/*, {
-        test: /\.scss$/,
-        loader: 'style!css!sass'
-      } , {
-        test: /\.(png|jpg)$/,
-        loader: 'file-loader'
-      } */
-      ,{
+      },
+      {
         test: /\.module\.s(a|c)ss$/,
         loader: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,

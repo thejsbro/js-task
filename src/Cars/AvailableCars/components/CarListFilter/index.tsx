@@ -7,7 +7,9 @@ import 'common/styles.scss';
 
 interface ICarListFilter {
     colors: string[];
+    selectedColor: string;
     manufacturers: string[];
+    selectedManufacturer: string;
     onSelect: (params: Partial<ICarSearchParams>) => void;
     onButtonClick: () => void;
 }
@@ -19,6 +21,7 @@ export class CarListFilter extends React.Component<ICarListFilter> {
     onManufacturerSelect = (manufacturer:string) => this.props.onSelect({manufacturer});
 
     render() {
+        const {selectedManufacturer, selectedColor} = this.props;
         return (
             <div className='car-list-filter'>
                 <Select
@@ -26,16 +29,18 @@ export class CarListFilter extends React.Component<ICarListFilter> {
                     items={this.props.colors}
                     label='Color'
                     onSelect={this.onColorSelect}
+                    selected={selectedColor}
                 />
                 <Select
                     items={this.props.manufacturers}
                     label='Manufacturer'
                     onSelect={this.onManufacturerSelect}
+                    selected={selectedManufacturer}
                 />
                 <Button
-                    handleClick={this.props.onButtonClick}
+                    onClick={this.props.onButtonClick}
                     text='Filter'
-                    className='filter-button'
+                    className='car-list-filter__button'
                 />
             </div>
     )}

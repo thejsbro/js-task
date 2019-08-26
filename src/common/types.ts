@@ -14,3 +14,7 @@ export interface ICarSearchParams {
     manufacturer: string;
     color: string;
 }
+
+export interface IManufactirers {
+    name: string;
+}

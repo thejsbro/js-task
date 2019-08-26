@@ -67,20 +67,17 @@ $space-large: 24px;
 }
 
 .text-link {
-    @extend .text-roboto--x-small;
     color: $orange;
     cursor: pointer;
+    text-decoration: none;
     &:hover{
         color: $orange-dark;
         text-decoration: underline;
     }
 }
 
-.main {
-    margin: $space-large;
-}
-
 .body {
+    min-width: 670px;
     position: relative;
     display: flex;
     min-height: 100vh;
@@ -91,4 +88,9 @@ $space-large: 24px;
         display: block;
         height: 80px;
       }
+}
+
+.center {
+    margin-top: 25%;
+    text-align: center;
 }

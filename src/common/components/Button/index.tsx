@@ -5,13 +5,13 @@ export interface IButton {
     pressed?: boolean;
     text: string;
     className?: string;
-    handleClick?: () => void;
+    onClick?: () => void;
 }
 
-export const Button = ({text, className, pressed, handleClick} : IButton) => {
+export const Button = ({text, className, pressed, onClick} : IButton) => {
     return (
     <button
-        onClick={handleClick}
+        onClick={onClick}
         className={`button${pressed ? '--pressed' : ''} ${!!className ? className : ''}`}
     >
         {text}

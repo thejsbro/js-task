@@ -32,6 +32,10 @@
     border: 1px solid $gray;
     padding: $space-small;
 
+    &:hover {
+        cursor: pointer;
+    }
+
     .select-box__arrow {
         height: 14px;
         float: right;

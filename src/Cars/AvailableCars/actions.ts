@@ -1,6 +1,5 @@
-import * as types from './actionsTypes';
+import * as types from './actionTypes';
 import axios from 'axios';
-import { availableCars } from './reducers';
 
 interface ICarSearchParams {
     page: number;
@@ -15,16 +14,18 @@ export const getCars = (params?: ICarSearchParams) => {
         dispatch({
             type: types.CARS_DATA_LOADING,
         })
-        const searchParams = !!params ? params : getState().availableCars.searchParams;
-        const manufacturers = axios.get('/api/manufacturers');
-        const colors = axios.get('/api/colors');
-        console.log(searchParams)
-        const cars = axios.get('/api/cars', {params: searchParams});
-        const promises = !!params ? [cars] : [cars, manufacturers, colors];
+        const {searchParams} = getState().availableCars;
+        const newSearchParams = !!params ? params : searchParams;
+        const cars = axios.get('/api/cars', {params: newSearchParams});
+        const promises = [cars];
+        if (!params) {
+            const manufacturers = axios.get('/api/manufacturers');
+            const colors = axios.get('/api/colors');
+            promises.push(manufacturers, colors);
+        }
         return (
             Promise.all(promises)
                 .then((response) => {
-                    console.log(response);
                     dispatch({
                     type: types.CARS_DATA_LOADED,
                     data: response,
@@ -37,3 +38,7 @@ export const setRequestParams = (params: ICarSearchParams) => ({
     type: types.SET_SEARCH_PARAMS,
     data: params,
 });
+
+export const dropPagination = () => ({
+    type: types.DROP_PAGINATION
+})

@@ -19,8 +19,9 @@ export const Select = ({
     emptyName = 'None',
     showEmptyInList = true,
     className,
+    selected,
 }: ISelect) => {
-    const [state, setState] = useState({opened: false, selected: ''});
+    const [state, setState] = useState({opened: false, selected: selected || ''});
     const toggleSelect = () => setState({...state, opened: !state.opened})
     const handleSelect = (item: string) => () => {
         setState({opened: false, selected: item});
@@ -33,7 +34,7 @@ export const Select = ({
                 {!!state.selected ? state.selected : emptyName}
                 <img
                     className={`select-box__arrow${state.opened ? '--opened' : ''}`}
-                    src='./public/images/drop-down-arrow .svg'
+                    src='./images/drop-down-arrow .svg'
                 />
             </div>
             {state.opened && <div className='select-box-list'>

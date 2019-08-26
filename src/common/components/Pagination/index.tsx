@@ -5,29 +5,29 @@ import 'common/styles.scss';
 interface IPagination {
     page: number;
     maxPage: number;
-    action: (page: number) => void;
+    onPageSelect: (page: number) => void;
 }
 
 export class Pagination extends React.Component<IPagination> {
 
     nextPage = () => {
-        const { page, maxPage, action } = this.props;
-        return (page === maxPage ? null : action(page + 1));
+        const { page, maxPage, onPageSelect } = this.props;
+        return (page === maxPage ? null : onPageSelect(page + 1));
     };
 
     prevPage = () => {
-        const { page, action } = this.props;
-        return (page === 1 ? null : action(page -1));
+        const { page, onPageSelect } = this.props;
+        return (page === 1 ? null : onPageSelect(page -1));
     };
 
     lastPage = () => {
-        const { page, maxPage, action } = this.props;
-        return (page === maxPage ? null : action(maxPage));
+        const { page, maxPage, onPageSelect } = this.props;
+        return (page === maxPage ? null : onPageSelect(maxPage));
     };
 
     firstPage = () => {
-        const { page, action } = this.props;
-        return (page === 1 ? null : action(1));
+        const { page, onPageSelect } = this.props;
+        return (page === 1 ? null : onPageSelect(1));
     };
 
     render() {
