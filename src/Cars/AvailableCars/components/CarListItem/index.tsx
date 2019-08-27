@@ -23,7 +23,8 @@ export const CarListItem = ({ car }: IProps) => {
                         `Stock # ${car.stockNumber} - 
                         ${car.mileage.number} ${car.mileage.unit} - 
                         ${car.fuelType} - 
-                        ${car.color}`}
+                        ${car.color}`
+                    }
                 </div>
                 <div>
                     <NavLink

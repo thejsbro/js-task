@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import axios from 'axios';
+import {get} from 'lodash';
 
 interface ICarSearchParams {
     page: number;
@@ -18,7 +19,7 @@ export const getCarDetails = (stockNumber: string) =>
                 .then((response) => {
                     dispatch({
                     type: types.CAR_DETAILS_LOADED,
-                    data: response,
+                    data: get(response, 'data.car', {}),
                 })})
                 .catch((error) => console.log('ERROR: ', error))
     )};

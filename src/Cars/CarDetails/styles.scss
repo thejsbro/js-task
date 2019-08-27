@@ -1,4 +1,29 @@
-.car-details__image {
+@import 'common/styles.scss';
+
+.car-details-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: 250px;
-    background-color: gray;
+    background-color: $gray;
+}
+
+.car-details-box {
+    display: flex;
+    justify-content: center;
+    margin-top: $space-large;
+}
+
+.car-details-text {
+    width: 40%;
+    height: 100%;
+    margin-right: $space-large;
+}
+
+.car-details-save {
+    border: 1px solid $gray;
+    width: 33%;
+    height: 100%;
+    padding: $space-large;
+    margin-left: $space-large;
 }
