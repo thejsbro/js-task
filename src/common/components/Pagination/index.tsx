@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles.scss';
-import 'common/styles.scss';
 
 interface IPagination {
     page: number;

@@ -3,7 +3,6 @@ import { Select } from 'common/components/Select';
 import { Button } from 'common/components/Button';
 import { ICarSearchParams } from 'common/types'
 import './styles.scss'
-import 'common/styles.scss';
 
 interface ICarListFilter {
     colors: string[];

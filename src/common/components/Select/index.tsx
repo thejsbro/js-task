@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './styles.scss'
-import 'common/styles.scss';
 
 export interface ISelect {
     emptyName?: string;

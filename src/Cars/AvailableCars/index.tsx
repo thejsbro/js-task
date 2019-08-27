@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { find } from 'lodash';
 import {
     getCars as getCarsAction,
@@ -9,11 +10,11 @@ import {
 import { Pagination } from 'common/components/Pagination'
 import { Select } from 'common/components/Select';
 import {WithLoaderHOC} from 'common/hocs/WithLoaderHOC'
+import {IAppState} from 'common/reducers'
 import { ICar, ICarSearchParams } from 'common/types';
 import { CarListItem } from './components/CarListItem';
 import { CarListFilter } from './components/CarListFilter';
 import { sortTypes } from './consts';
-import 'common/styles.scss';
 import './styles.scss';
 
 interface IStateToProps {
@@ -109,7 +110,7 @@ class AvailableCars extends React.Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IAppState) => ({
     cars: state.availableCars.cars,
     searchParams: state.availableCars.searchParams,
     manufacturers: state.availableCars.manufacturers,
@@ -120,13 +121,13 @@ const mapStateToProps = (state: any) => ({
     loaded: state.availableCars.loaded,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
-    getCars: (params?: ICarSearchParams) => dispatch(getCarsAction(params)),
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    getCars: (params?: ICarSearchParams) => dispatch((getCarsAction(params) as any)),
     setParams: (params: ICarSearchParams) => dispatch(setRequestParams(params)),
     dropPagination: () => dispatch(dropPaginationAction()),
 });
 
-const AvailableCarsConncted = connect(mapStateToProps, mapDispatchToProps)(WithLoaderHOC<IProps>(AvailableCars));
+const AvailableCarsConncted = connect(mapStateToProps, mapDispatchToProps)((WithLoaderHOC<IProps>(AvailableCars) as any));
 // const AvailableCarsConncted = connect(mapStateToProps, mapDispatchToProps)(AvailableCars);
 
 export { AvailableCarsConncted as AvailableCars };

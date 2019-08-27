@@ -3,13 +3,13 @@ import * as types from './actionTypes';
 import { AnyAction } from 'redux';
 import { ICar } from 'common/types';
 
-export interface IAvailableCarsState {
-    cars: ICar;
+export interface ICarDetailsState {
+    car: ICar | {};
     loading: false;
     loaded: false;
 }
 
-const initialState = {
+const initialState: ICarDetailsState = {
     car: {},
     loading: false,
     loaded: false

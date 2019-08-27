@@ -1,5 +1,8 @@
 import * as types from './actionTypes';
 import axios from 'axios';
+import {Action, ActionCreator, Dispatch} from 'redux';
+import {ThunkAction} from 'redux-thunk';
+import {IAppState} from 'common/reducers'
 
 interface ICarSearchParams {
     page: number;
@@ -8,9 +11,11 @@ interface ICarSearchParams {
     color: string;
 }
 
+type CARS_DATA_LOADED = typeof types.CARS_DATA_LOADED
+
 export const getCars = (params?: ICarSearchParams) => {
     // const params = {page:1, sort:'desc', manufacturer: 'Audi', color:'red'}
-    return (dispatch: any, getState: any) => {
+    return (dispatch: Dispatch, getState: () => IAppState) => {
         dispatch({
             type: types.CARS_DATA_LOADING,
         })

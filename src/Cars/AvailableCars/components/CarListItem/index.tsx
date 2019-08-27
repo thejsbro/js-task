@@ -2,12 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ICar } from 'common/types'
 import './styles.scss'
-import 'common/styles.scss';
 
 interface IProps {
     car: ICar;
     key: number;
-    // onViewDetails: () => void;
 }
 
 export const CarListItem = ({ car }: IProps) => {

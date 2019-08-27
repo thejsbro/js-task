@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { get } from 'lodash';
 import { Button } from 'common/components/Button';
+import {IAppState} from 'common/reducers'
 import { ICar } from 'common/types';
 import { WithLoaderHOC } from 'common/hocs/WithLoaderHOC';
 import {
@@ -72,7 +74,7 @@ class CarDetails extends React.Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IAppState) => ({
     car: state.carDetails.car,
     loading: state.carDetails.loading,
     loaded: state.carDetails.loaded,

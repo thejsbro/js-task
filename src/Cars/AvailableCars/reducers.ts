@@ -1,14 +1,20 @@
 // import { VisibilityFilters } from './actions'
 import * as types from './actionTypes';
 import { AnyAction } from 'redux';
-import { ICar, ICarSearchParams } from 'common/types';
+import { ICar, ICarSearchParams, IManufactirers } from 'common/types';
 
 export interface IAvailableCarsState {
     cars: ICar[];
     searchParams: ICarSearchParams;
+    colors: string[]
+    manufacturers: IManufactirers[],
+    totalPageCount: number,
+    totalCarsCount: number,
+    loading: boolean,
+    loaded: boolean
 }
 
-const initialState = {
+const initialState: IAvailableCarsState = {
     cars: [],
     searchParams: {
         page: 1,
@@ -20,6 +26,8 @@ const initialState = {
     manufacturers: [],
     totalPageCount: 0,
     totalCarsCount: 0,
+    loading: false,
+    loaded: false
 };
 
 export function availableCars(state = initialState, action: AnyAction) {

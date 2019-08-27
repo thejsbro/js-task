@@ -22,7 +22,8 @@ module.exports = {
       template: './public/index.html',
       inject: true,
       appMountId: 'root',
-      title: 'AUTO-1'
+      title: 'AUTO-1',
+      favicon: './public/images/favicon.ico'
     })
   ],
   resolve: {
