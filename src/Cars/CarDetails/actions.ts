@@ -9,7 +9,7 @@ interface ICarSearchParams {
     color: string;
 }
 
-export const getCarDetails = (stockNumber: string) =>
+export const getCarDetails = (stockNumber: number) =>
     (dispatch: any) => {
         dispatch({
             type: types.CAR_DETAILS_LOADING,

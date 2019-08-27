@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { find } from 'lodash';
 import {
     getCars as getCarsAction,
@@ -121,13 +120,13 @@ const mapStateToProps = (state: IAppState) => ({
     loaded: state.availableCars.loaded,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    getCars: (params?: ICarSearchParams) => dispatch((getCarsAction(params) as any)),
+const mapDispatchToProps = (dispatch: any) => ({
+    getCars: (params?: ICarSearchParams) => dispatch(getCarsAction(params)),
     setParams: (params: ICarSearchParams) => dispatch(setRequestParams(params)),
     dropPagination: () => dispatch(dropPaginationAction()),
 });
 
-const AvailableCarsConncted = connect(mapStateToProps, mapDispatchToProps)((WithLoaderHOC<IProps>(AvailableCars) as any));
+const AvailableCarsConncted = connect(mapStateToProps, mapDispatchToProps)(WithLoaderHOC<IProps>(AvailableCars));
 // const AvailableCarsConncted = connect(mapStateToProps, mapDispatchToProps)(AvailableCars);
 
 export { AvailableCarsConncted as AvailableCars };

@@ -1,13 +1,13 @@
 // import { VisibilityFilters } from './actions'
 import * as types from './actionTypes';
 import { AnyAction } from 'redux';
-import { ICar, ICarSearchParams, IManufactirers } from 'common/types';
+import { ICar, ICarSearchParams } from 'common/types';
 
 export interface IAvailableCarsState {
     cars: ICar[];
     searchParams: ICarSearchParams;
     colors: string[]
-    manufacturers: IManufactirers[],
+    manufacturers: string[],
     totalPageCount: number,
     totalCarsCount: number,
     loading: boolean,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import { get } from 'lodash';
 import { Button } from 'common/components/Button';
 import {IAppState} from 'common/reducers'
@@ -9,20 +8,25 @@ import { WithLoaderHOC } from 'common/hocs/WithLoaderHOC';
 import {
     getCarDetails as getCarDetailsAction,
 } from './actions';
+import {
+    toggleFavorites as toggleFavoritesAction,
+} from '../FavoriteCars/actions';
 import './styles.scss';
 
 interface ICarDetails {
-    stockNumber: string;
+    stockNumber: number;
 }
 
 interface IStateProps {
     car: ICar;
+    favoriteCars: number[];
     loading: boolean;
     loaded: boolean;
 }
 
 interface IDispatchProps {
-    getCarDetails: (stockNumber: string) => void;
+    getCarDetails: (stockNumber: number) => void;
+    toggleFavorites: (stockNumber: number) => void;
 }
 
 type IProps = ICarDetails & IStateProps & IDispatchProps;
@@ -36,8 +40,11 @@ class CarDetails extends React.Component<IProps> {
         }
     }
 
+    handleButtonClick = () => this.props.toggleFavorites(this.props.car.stockNumber)
+
     render() {
-        const {car} = this.props;
+        const {car, favoriteCars} = this.props;
+        const isFavorite = !!favoriteCars.filter((el) => el === car.stockNumber).length
         return (
             <div>
                 <div className='car-details-image'>
@@ -66,7 +73,12 @@ class CarDetails extends React.Component<IProps> {
                         <div className='margin-bottom'>
                             If you like this car, click the button and save it in your collection of favourit items
                         </div>
-                        <Button className='right' text='Save'/>
+                        <Button
+                            onClick={this.handleButtonClick}
+                            pressed={isFavorite}
+                            className='right'
+                            text='Save'
+                        />
                     </div>
                 </div>
             </div>
@@ -78,10 +90,12 @@ const mapStateToProps = (state: IAppState) => ({
     car: state.carDetails.car,
     loading: state.carDetails.loading,
     loaded: state.carDetails.loaded,
+    favoriteCars: state.favoriteCars,
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
-    getCarDetails: (stockNumber: string) => dispatch(getCarDetailsAction(stockNumber)),
+    getCarDetails: (stockNumber: number) => dispatch(getCarDetailsAction(stockNumber)),
+    toggleFavorites: (stockNumber: number) => dispatch(toggleFavoritesAction(stockNumber)),
 })
 
 const connectedCarDetails = connect(mapStateToProps, mapDispatchToProps)(WithLoaderHOC(CarDetails));

@@ -20,7 +20,7 @@ export const Routes = () => (
                 path="/details/:stockNumber"
                 exact
                 render={
-                    ({match}: MatchProps) => <CarDetails stockNumber={match.params.stockNumber}/>
+                    ({match}: MatchProps) => <CarDetails stockNumber={+match.params.stockNumber}/>
                 }
             />
             <Route path="/purchase" exact component={ErrorPage}/>
